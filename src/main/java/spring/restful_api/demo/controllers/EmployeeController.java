@@ -1,6 +1,6 @@
 package spring.restful_api.demo.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employees")
+@RequiredArgsConstructor
 public class EmployeeController {
 
-    @Autowired
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     @GetMapping
     public ResponseEntity<List<Employee>> getEmployees() {
@@ -34,6 +34,18 @@ public class EmployeeController {
     public ResponseEntity<Employee> getEmployeeById(@Param("id") Long id) {
         Employee employee = employeeService.getEmployee(id);
         return ResponseEntity.ok(employee);
+    }
+
+    @GetMapping("/employee-first-name")
+    public ResponseEntity<List<Employee>> getEmployeeByFirstName(@Param("firstName") String firstName) {
+        List<Employee> employees = employeeService.getEmployeeByFirstName(firstName);
+        return ResponseEntity.ok(employees);
+    }
+
+    @GetMapping("/employee-last-name")
+    public ResponseEntity<List<Employee>> getEmployeeByLastName(@RequestBody String lastName) {
+        List<Employee> employees = employeeService.getEmployeeByLastName(lastName);
+        return ResponseEntity.ok(employees);
     }
 
     @PostMapping("/add-employee")

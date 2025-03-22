@@ -19,12 +19,4 @@ public class GlobalException {
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(DepartmentException.class)
-    public ResponseEntity<ErrorResponse> handleDepartmentException(DepartmentException e, HttpServletRequest request) {
-        ErrorResponse error = new ErrorResponse();
-        error.setStatusCode(HttpStatus.NOT_FOUND.value());
-        error.setMessage(e.getMessage());
-        error.setPath(request.getServletPath());
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    }
 }

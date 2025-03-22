@@ -8,9 +8,13 @@ import java.util.List;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
+    // select * from employee
     @Query("SELECT e FROM Employee e")
     List<Employee> sqlQurey();
 
-    List<Employee> findByDepartmentId(Long departmentId);
+    // select * from employee where first_name = ?
+    List<Employee> findByFirstName(String firstName);
 
+    // select * from employee where last_name = ?
+    List<Employee> findByLastName(String lastName);
 }
