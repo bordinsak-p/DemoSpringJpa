@@ -42,12 +42,9 @@ public class EmployeeService {
 
     @Transactional
     public Employee updateEmployee(Employee req) {
-        Employee employee = employeesRepository.findById(req.getId())
-                .orElseThrow(() -> new EmployeeException(req.getId()));
-
+        Employee employee = employeesRepository.findById(req.getId()).orElseThrow(() -> new EmployeeException(req.getId()));
         employee.setFirstName(req.getFirstName());
         employee.setLastName(req.getLastName());
-
         return employeesRepository.save(employee);
     }
 
