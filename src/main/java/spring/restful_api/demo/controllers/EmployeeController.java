@@ -10,6 +10,7 @@ import spring.restful_api.demo.exceptions.EmployeeException;
 import spring.restful_api.demo.services.EmployeeService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/employees")
@@ -31,7 +32,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employee-id")
-    public ResponseEntity<Employee> getEmployeeById(@Param("id") Long id) {
+    public ResponseEntity<Employee> getEmployeeById(@Param("id") UUID id) {
         Employee employee = employeeService.getEmployee(id);
         return ResponseEntity.ok(employee);
     }
@@ -63,7 +64,7 @@ public class EmployeeController {
 
     @DeleteMapping("/delete-employee")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteEmployee(@Param("id") Long id) {
+    public void deleteEmployee(@Param("id") UUID id) {
         if (id == null) {
             throw new EmployeeException("Employee ID is null");
         }

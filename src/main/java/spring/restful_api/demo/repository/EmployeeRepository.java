@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 import spring.restful_api.demo.entities.Employee;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
 
     // select * from employee
     @Query("SELECT e FROM Employee e")

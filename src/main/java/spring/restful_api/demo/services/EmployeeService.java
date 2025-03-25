@@ -8,6 +8,7 @@ import spring.restful_api.demo.exceptions.EmployeeException;
 import spring.restful_api.demo.repository.EmployeeRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +24,7 @@ public class EmployeeService {
         return employeesRepository.sqlQurey();
     }
 
-    public Employee getEmployee(Long id) {
+    public Employee getEmployee(UUID id) {
         return employeesRepository.findById(id).orElseThrow(() -> new EmployeeException(id));
     }
 
@@ -49,7 +50,7 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void deleteEmployee(Long id) {
+    public void deleteEmployee(UUID id) {
         Employee employee = employeesRepository.findById(id).orElseThrow(() -> new EmployeeException(id));
         employeesRepository.delete(employee);
     }

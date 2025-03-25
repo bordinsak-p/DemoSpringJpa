@@ -10,6 +10,7 @@ import spring.restful_api.demo.exceptions.EmployeeException;
 import spring.restful_api.demo.services.EmployeeService;
 
 import java.util.List;
+import java.util.UUID;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS) // ทำให้ทุก @Test ใช้ instance เดียวกัน
@@ -21,7 +22,7 @@ class EmployeeServiceTests {
 
     @Setter
     @Getter
-    private long empSaveId = 0;
+    private UUID empSaveId = null;
 
     @Test
     @Order(1)
