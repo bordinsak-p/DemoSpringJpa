@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import spring.restful_api.demo.models.ErrorResponse;
 
 @RestControllerAdvice
-public class GlobalException {
+public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmployeeException.class)
     public ResponseEntity<ErrorResponse> handleEmployeeException(EmployeeException e, HttpServletRequest request) {
