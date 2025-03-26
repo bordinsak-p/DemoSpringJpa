@@ -53,7 +53,7 @@ class EmployeeServiceTests {
     @Test
     @Order(5)
     void getEmployeeIdByPath() {
-        Employee employees = employeeService.getEmployee(getEmpSaveId());
+        Employee employees = employeeService.getEmployeeByPath(getEmpSaveId());
         Assertions.assertNotNull(employees);
     }
 
