@@ -51,21 +51,28 @@ class EmployeeServiceTests {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
+    void getEmployeeIdByPath() {
+        Employee employees = employeeService.getEmployee(getEmpSaveId());
+        Assertions.assertNotNull(employees);
+    }
+
+    @Test
+    @Order(6)
     void getEmployeeByFirstName() {
         List<Employee> employees = employeeService.getEmployeeByFirstName("John");
         Assertions.assertNotNull(employees);
     }
 
     @Test
-    @Order(5)
+    @Order(7)
     void getEmployeeByLastName() {
         List<Employee> employees = employeeService.getEmployeeByLastName("Doe");
         Assertions.assertNotNull(employees);
     }
 
     @Test
-    @Order(6)
+    @Order(8)
     void updateEmployee() {
         Employee employee = employeeService.getEmployee(getEmpSaveId());
         employee.setFirstName("Jane");
@@ -75,7 +82,7 @@ class EmployeeServiceTests {
     }
 
     @Test
-    @Order(7)
+    @Order(9)
     void deleteEmployee() {
         Employee employee = employeeService.getEmployee(getEmpSaveId());
         employeeService.deleteEmployee(employee.getId());

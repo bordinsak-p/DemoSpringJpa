@@ -37,6 +37,12 @@ public class EmployeeController {
         return ResponseEntity.ok(employee);
     }
 
+    @GetMapping("/employee-id/{id}")
+    public ResponseEntity<Employee> getEmployeeIdByPath(@PathVariable("id") UUID id) {
+        Employee employee = employeeService.getEmployeeByPath(id);
+        return ResponseEntity.ok(employee);
+    }
+
     @GetMapping("/employee-first-name")
     public ResponseEntity<List<Employee>> getEmployeeByFirstName(@Param("firstName") String firstName) {
         List<Employee> employees = employeeService.getEmployeeByFirstName(firstName);

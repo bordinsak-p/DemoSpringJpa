@@ -28,6 +28,10 @@ public class EmployeeService {
         return employeesRepository.findById(id).orElseThrow(() -> new EmployeeException(id));
     }
 
+    public Employee getEmployeeByPath(UUID id) {
+        return employeesRepository.findById(id).orElseThrow(() -> new EmployeeException(id));
+    }
+
     public List<Employee> getEmployeeByFirstName(String firstName) {
         return employeesRepository.findByFirstName(firstName);
     }
